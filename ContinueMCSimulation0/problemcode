@@ -1,0 +1,111 @@
+ifstream f1;
+ifstream f2;
+	
+	f1.open("0_MCOutput.txt");
+	if(f1.fail()){
+	      cout << "error" << endl;
+	}
+	f2.open("0classSize.txt");
+	if(f2.fail()){
+	      cout << "error2" << endl;
+	}
+	
+	//int n = 3;//960;
+	int n = std::distance(std::istream_iterator<double>(f2), std::istream_iterator<double>());
+	cout<<"n="<<n<<endl;
+	int num1=0, num2=0;
+	int nopArray[n];
+	double diamArray[n];
+/*	
+	f1.open("0_MCOutput.txt");
+	if(f1.fail()){
+	      cout << "error" << endl;
+	}
+	*/
+	while (!f1.eof() && num1<n){
+		f1 >> nopArray[num1];
+		cout<<"nopArray: "<<nopArray[num1]<<endl;
+		num1++;
+	}
+	f1.close();
+/*
+	f2.open("0classSize.txt");
+	if(f2.fail()){
+	      cout << "error2" << endl;
+	}
+	*/
+	while (!f2.eof() && num2<n){
+		f2 >> diamArray[num2];
+		//cout<<"1diamArray: "<<diamArray[num2]<<endl;
+		num2++;
+	}
+	f2.close();
+/*	
+    //Sort 
+     int temp;
+     for(int i2=0; i2<=n-1; i2++){
+    	 for(int j=0; j<n-1; j++){  
+           if(nopArray[j]>nopArray[j+1]){
+        	   temp=nopArray[j];
+        	   nopArray[j]=nopArray[j+1];
+        	   nopArray[j+1]=temp;        
+           }
+    	 }         
+     } 	
+	cout<<"sorted"<<endl;    
+	for(int i=0; i<n; i++){
+		//f1>>nopArray[i];
+		cout<<" "<<nopArray[i];
+		//f2>>diamArray[i];
+		//cout<<"1diamArray: "<<diamArray[i]<<endl;
+	} */
+/**/
+	/*
+	int temp, flag=1;
+	for(int i = 1; (i <= n)&& flag; i++){
+		flag = 0;
+	          for (int j=0; j < (n -1); j++){
+	               if (nopArray[j+1] < nopArray[j]){ 
+	                    temp = nopArray[j];             // swap elements
+	                    nopArray[j] = nopArray[j+1];
+	                    nopArray[j+1] = temp;
+	                    flag = 1;
+	               }
+	          }
+	     }
+						
+	for (int i; i<n; i++){
+		cout<<"1nopArray: "<<nopArray[i]<<endl;
+	}
+*/		
+	
+	for(int i=0; i < n; i++){
+		pcv.InsertNewParticleClass();
+		cout<<"value of n:"<<n<< " value of i:"<<i<<endl;
+		for (int j=0; j<nopArray[i]; j++){
+			cout <<"j; "<<j<<"dimarray: "<<diamArray[i]<<endl;
+			cout<<"j: "<<j <<" nopArray: "<<nopArray[i]<<endl;
+			pcv.AddParticle(j, diamArray[i]);
+			cout<<"particle added with success"<<endl;
+		}
+		cout<<"TEST12"<<endl;
+		pcv.UpdateBoundary();
+		cout<<"TEST13"<<endl;
+	}
+	cout<<"TEST10"<<endl;
+	return pcv;	
+}
+
+void ParticleClassVector::AddParticle(int j, double p) {
+	cout<<"in"<<endl;
+	pcv[j].PushBackParticle(Particle(p));
+	cout<<"out"<<endl;
+}
+
+
+void ParticleClass::PushBackParticle(Particle particle) {
+	cout<<"in in"<<endl;
+	pv.push_back(particle);
+	cout<<"out out "<<endl;
+	
+}
