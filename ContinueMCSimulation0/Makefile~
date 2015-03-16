@@ -1,0 +1,2 @@
+MCSmake: LogNormalDistribution.cpp ParticleSystem.cpp ParticleClass.cpp ParticleClassVector.cpp Logger.cpp Calculator.cpp Particle.cpp MCSimulation.cpp
+	g++ -Wall -g LogNormalDistribution.cpp ParticleSystem.cpp ParticleClass.cpp ParticleClassVector.cpp Logger.cpp Calculator.cpp Particle.cpp MCSimulation.cpp -lmgl -o MCS

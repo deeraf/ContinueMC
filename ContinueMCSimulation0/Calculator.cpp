@@ -117,8 +117,8 @@ void Calculator::DoSimulation() {
 				}else {
 					currentFinePaintInterval *= 10;
 					finePaintCount = 1;
-					currentFinePaintTime += currentFin
-							Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMasePaintInterval;
+					currentFinePaintTime += currentFinePaintInterval;
+							//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMasePaintInterval;
 				}
 			}
 		}else {
@@ -145,7 +145,7 @@ void Calculator::DoSimulation() {
 			pcv.ReduceParticles();
 			cout<<"REDUCEDGetNumberOfParticles: " << pcv.GetNumberOfParticles() <<endl;
 			volumen = volumen * 0.5;
-			Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
+			//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
 		} else if (keimbildungGenug && pcv.GetNumberOfParticles() <= maxNumberOfParticles * 0.25) {
 			pcv.DuplicateParticles();
 			cout<<"vol3: "<< volumen<<endl;
@@ -164,7 +164,7 @@ void Calculator::DoSimulation() {
 		ps.UpdateKritischGlycerinZusammensetzung();
 
 		keimbildungRate = ps.CalKeimbildungsrate();
-		Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
+		//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
 		coagulationRate = pcv.GetTotalRate();
 
 		if (keimbildungRate / (keimbildungRate + coagulationRate / pow(volumen,2)) < nextRandom || ps.wasserDampfMasse <= 0
@@ -183,7 +183,7 @@ void Calculator::DoSimulation() {
 					rate1 = rate2 = 0.0;
 					for (unsigned int j = i; j < pcv.GetNumberOfParticleClasses(); j++) {
 						rate1 = rate2;
-						Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
+						//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
 
 						if (i == j) {
 							rate2 += pcv.CalK(pcv.GetParticleClassAt(i).GetAverageDiameter(), pcv.GetParticleClassAt(i).GetAverageDiameter())
@@ -204,8 +204,8 @@ void Calculator::DoSimulation() {
 								foundParticlePair = true;
 								numberOfCoagulation++;
 								numberOfAction++;
-								currentDeltaT = GetDel
-										Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMastaTime(keimbildungRate, coagulationRate);
+								currentDeltaT = GetDeltaTime(keimbildungRate, coagulationRate);
+										//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMastaTime(keimbildungRate, coagulationRate);
 								currentTime += currentDeltaT;
 								logger.PrintTraceCoagulation(pcv.GetNumberOfAllParticles(), numberOfCoagulation, id, jd, newParticle, nextCriterion, nextRandom,
 								coagulationRate, currentTime);
@@ -285,7 +285,7 @@ void Calculator::DoSimulation() {
 					* pow(tempWasserPartielDruck / ps.WasserUebersaettigungsdruck,
 							(1 - ps.CalKritischGlycerinZusammensetzungTemp(tempwasserDampfMasse, tempglycerinDampfMasse)));
 
-			Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
+			//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
 			if (((c - d) / c) < ps.MaxDeltaUebersaettigungsrate) {
 				Particle minParticle = pcv.GetParticleClassAt(0).GetParticleAt(0);
 				double massenAenderungsrate = ps.Calmassenaenderungsrate(minParticle, currentDeltaT);
@@ -326,7 +326,7 @@ void Calculator::DoOnlyWachstum() {
 	//logger.DrawPlot(pcv.GetXResultAsIntervalNew(), pcv.GetQxResultAsIntervalNew(), pcv.GetNumberOfParticleClasses(), 999, currentTime);
 	logger.WriteToFileParticle(pcv, volumen, 999, ps.wasserDampfMasse, ps.glycerinDampfMasse, ps.stickStoffDampfMasse);
 
-	Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
+	//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
 
 	while (currentTime <= totalSimulationTime) {
 		coagulationRate = pcv.GetTotalRate();
@@ -336,7 +336,7 @@ void Calculator::DoOnlyWachstum() {
 		cout<<"!!!!!!!"<<currentTime<<"!!!!!!!"<<endl;
 	}
 }
-Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
+//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMas
 
 void Calculator::DoOnlyWachstumForOnlyWachtum(double dt, double ct, double vol) {
 	double deltaT = dt;
@@ -397,8 +397,8 @@ void Calculator::DoWachstum(double dt, double ct, double vol) {
 
 			//	cout<<"1 "<< pcv.GetParticleClassAt(i).GetParticleAt(j).GetGlycerinMol()<<"  "<<pcv.GetParticleClassAt(i).GetParticleAt(j).GetWasserMol()<<endl;
 
-				ps.CalWachstumNewParticle(pcv.GetParti
-						Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMascleClassAt(i).GetParticleAt(j), deltaT);
+				ps.CalWachstumNewParticle(pcv.GetParticleClassAt(i).GetParticleAt(j), deltaT);
+						//Calculator cal(logNormal, simulationTime, tolerant, maxNumberOfParticles, interval, wasserDampfMasse, glycerinDampfMascleClassAt(i).GetParticleAt(j), deltaT);
 
 				deltaGlycerinMol += pcv.GetParticleClassAt(i).GetParticleAt(j).GetGlycerinMol();
 				deltaWasserMol += pcv.GetParticleClassAt(i).GetParticleAt(j).GetWasserMol();

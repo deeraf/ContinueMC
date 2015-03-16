@@ -32,6 +32,11 @@ int main() {
 	glycerin >> glycerinDampfMasse;
 	stickstoff >> stickStoffDampfMasse;
 
+	cout<<"water: "<<wasser<<endl;
+	cout<<"glycerin: "<<glycerin<<endl;
+	cout<<"stickstoff: "<<stickstoff<<endl;
+				
+	
 	/*wasserDampfMasse = 0.475694227;
 	glycerinDampfMasse = 0.811322932;
 	stickStoffDampfMasse = 0.14799376;*/

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+g++ -c Calculator.cpp
+g++ -c Logger.cpp
+g++ -c LogNormalDistribution.cpp
+g++ -c Particle.cpp
+g++ -c ParticleClass.cpp
+g++ -c ParticleClassVector.cpp
+g++ -c ParticleSystem.cpp
+g++ -c MCSimulation.cpp
+
+g++ Calculator.o Logger.o LogNormalDistribution.o Particle.o ParticleClass.o ParticleClassVector.o ParticleSystem.o MCSimulation.o -o StartMCSimulation0
+
